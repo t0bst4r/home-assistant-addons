@@ -1,21 +1,3 @@
-## 3.0.0-alpha.37 (2024-11-22)
-
-### 🚀 Features
-
-- prepare configurations per domainm, entity and compatibility mode ([cb0b599](https://github.com/t0bst4r/home-assistant-matter-hub/commit/cb0b599))
-- **nx-cloud:** setup nx cloud workspace ([2919527](https://github.com/t0bst4r/home-assistant-matter-hub/commit/2919527))
-
-### 🩹 Fixes
-
-- **climate:** do not set the target position when device is off ([b828295](https://github.com/t0bst4r/home-assistant-matter-hub/commit/b828295))
-- **climate:** only add humidity sensor if available at all ([948a34a](https://github.com/t0bst4r/home-assistant-matter-hub/commit/948a34a))
-- **deps:** update dependency ajv to v8 ([e73e5c5](https://github.com/t0bst4r/home-assistant-matter-hub/commit/e73e5c5))
-
-### ❤️  Thank You
-
-- t0bst4r @t0bst4r
-- Tobias Glatthar @t0bst4r
-
 ## 3.0.0-alpha.36 (2024-11-16)
 
 ### 🩹 Fixes
