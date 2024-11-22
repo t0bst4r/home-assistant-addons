@@ -1,4 +1,4 @@
-version: "3.0.0-alpha.37"
+version: "3.0.0-alpha.36"
 slug: hamh
 name: Home-Assistant-Matter-Hub
 description: Publish your entities from Home Assistant to any Matter-compatible controller like Alexa, Apple Home or Google Home.
