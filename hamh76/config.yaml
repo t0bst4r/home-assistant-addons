@@ -1,11 +1,11 @@
-version: "3.0.0-alpha.69"
+version: "3.0.0-alpha.76"
 image: ghcr.io/t0bst4r/home-assistant-matter-hub-addon
-slug: hamh_test
-name: Home-Assistant-Matter-Hub (Test Addon // DO NOT USE)
-description: THIS IS FOR TESTING PURPOSE. DO NOT USE THIS ADDON.
+slug: hamh76
+name: Home-Assistant-Matter-Hub (3.0.0-alpha.76)
+description: Last stable version which works with Amazon Alexa. Make sure to only enable one of the HAMH addons at once.
 url: https://github.com/t0bst4r/home-assistant-matter-hub
 panel_icon: mdi:hub
-panel_title: Matter Hub
+panel_title: Matter Hub (v76)
 homeassistant: 2024.1.0
 homeassistant_api: true
 host_network: true
