@@ -1,4 +1,4 @@
-version: "3.0.0-alpha.92"
+version: "3.0.0-alpha.93"
 image: ghcr.io/t0bst4r/home-assistant-matter-hub-addon
 slug: hamh
 name: Home-Assistant-Matter-Hub
