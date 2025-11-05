@@ -44,7 +44,7 @@ jobs:
         env:
           CHANGELOG_FILE: ${{steps.event_parser.outputs.project}}/CHANGELOG.md
         run: |
-          curl "${{ steps.event_parser.outputs.changelogUrl }}" > $CHANGELOG_FILE
+          curl -L "${{ steps.event_parser.outputs.changelogUrl }}" > $CHANGELOG_FILE
           git add $CHANGELOG_FILE
       - name: Apply release version
         env:
