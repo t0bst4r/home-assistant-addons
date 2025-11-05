@@ -1,0 +1,28 @@
+version: "3.0.0-alpha.95"
+image: ghcr.io/t0bst4r/home-assistant-matter-hub-addon
+slug: hamh-beta
+name: Home-Assistant-Matter-Hub (Beta)
+description: Beta Releases of Home Assistant Matter Hub
+url: https://github.com/t0bst4r/home-assistant-matter-hub
+panel_icon: mdi:hub
+panel_title: Matter Hub (Beta)
+homeassistant: 2024.1.0
+homeassistant_api: true
+host_network: true
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armv7
+ingress: true
+ingress_port: 0
+map:
+  - addon_config:rw
+options:
+  app_log_level: info
+  disable_log_colors: false
+  mdns_network_interface: ""
+schema:
+  app_log_level: list(silly|debug|info|notice|warn|error|fatal)
+  disable_log_colors: bool
+  mdns_network_interface: "str?"

@@ -1,0 +1,14 @@
+---
+configuration:
+  app_log_level:
+    name: Log Level
+    description: |
+      The log level used for this addon. One of: silly, debug, info, warn, error
+  disable_log_colors:
+    name: Disable log colors
+    description: |
+      Print the log as plain text without any colors.
+  mdns_network_interface:
+    name: mDNS Network Interface
+    description: |
+      Limit mDNS to this network interface. Only change it if you know what you are doing. Default: empty

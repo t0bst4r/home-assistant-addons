@@ -1,21 +1,14 @@
 name: Release Home-Assistant-Matter-Hub
 on:
   repository_dispatch:
-    event_name: release-hamh
-  workflow_dispatch:
-    inputs:
-      version:
-        type: string
-        description: The release version of Home Assistant Matter Hub
-        required: true
+    event_name: release
 # client_payload:
+#   project: "hamh"
+#   channel: "latest" | "beta" | "alpha"
 #   version: "3.0.0-alpha.33"
+#   changelogUrl: "https://..."
 
-env:
-  repo_url: https://raw.githubusercontent.com/t0bst4r/home-assistant-matter-hub
-  repo_changelog: CHANGELOG.md
-  changelog_file: hamh/CHANGELOG.md
-  config_file: hamh/config.yaml
+
 
 jobs:
   release:
@@ -29,25 +22,37 @@ jobs:
       - name: Get Version
         id: event_parser
         run: |
-          if [ -n "${{ github.event.client_payload.version }}" ]; then
-            echo "version=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
-          elif [ -n "${{ github.event.inputs.version }}" ]; then
-            echo "version=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
-          else
+          PROJECT="${{ github.event.client_payload.project }}"
+          CHANNEL="${{ github.event.client_payload.channel }}"
+          if [ "$CHANNEL" != "latest" ]; then
+            PROJECT="$PROJECT-$CHANNEL"
+          fi
+
+          echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
+          echo "channel=$CHANNEL" >> "$GITHUB_OUTPUT"
+          echo "version=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
+          echo "changelogUrl=${{ github.event.client_payload.changelogUrl }}" >> "$GITHUB_OUTPUT"
+          
+          if [ ! -d "$PROJECT" ]; then
+            echo "No Project: $PROJECT"
             exit 1
           fi
       - run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
       - name: Copy Changelog
+        env:
+          CHANGELOG_FILE: ${{steps.event_parser.outputs.project}}/CHANGELOG.md
         run: |
-          curl ${{ env.repo_url }}/v${{ steps.event_parser.outputs.version }}/${{ env.repo_changelog }} > ${{ env.changelog_file }}
-          git add ${{ env.changelog_file }}
+          curl "${{ steps.event_parser.outputs.changelogUrl }}" > $CHANGELOG_FILE
+          git add $CHANGELOG_FILE
       - name: Apply release version
+        env:
+          CONFIG_FILE: ${{steps.event_parser.outputs.project}}/config.yaml
         run: |
-          yq -i ".version = \"${{ steps.event_parser.outputs.version }}\"" ${{ env.config_file }}
-          git add ${{ env.config_file }}
+          yq -i ".version = \"${{ steps.event_parser.outputs.version }}\"" $CONFIG_FILE
+          git add $CONFIG_FILE
       - name: Publish
         run: |
-          git commit -m "bumb(home-assistant-matter-hub): bumb to version ${{ steps.event_parser.outputs.version }}"
+          git commit -m "bumb(${{steps.event_parser.outputs.project}}): bumb to version ${{ steps.event_parser.outputs.version }}"
           git push origin main
