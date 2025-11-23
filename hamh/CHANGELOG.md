@@ -1,3 +1,11 @@
+## [3.0.2](https://github.com/t0bst4r/home-assistant-matter-hub/compare/v3.0.1...v3.0.2) (2025-11-23)
+
+
+### Bug Fixes
+
+* Cover open state incorrectly syncs as "null" instead of 0% in Matter ([#910](https://github.com/t0bst4r/home-assistant-matter-hub/issues/910)) ([9c4b528](https://github.com/t0bst4r/home-assistant-matter-hub/commit/9c4b528b76dc78e2d55d413e1655b719e630e8b0))
+* properly report brightness value when light is off ([#909](https://github.com/t0bst4r/home-assistant-matter-hub/issues/909)) ([a002204](https://github.com/t0bst4r/home-assistant-matter-hub/commit/a00220414606f9d56fc177646727cd406ea4a6de))
+
 ## [3.0.1](https://github.com/t0bst4r/home-assistant-matter-hub/compare/v3.0.0...v3.0.1) (2025-11-05)
 
 
