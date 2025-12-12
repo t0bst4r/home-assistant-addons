@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/t0bst4r/home-assistant-matter-hub/compare/v3.0.2...v3.0.3) (2025-12-12)
+
+
+### Bug Fixes
+
+* frontend version number ([3ca7218](https://github.com/t0bst4r/home-assistant-matter-hub/commit/3ca7218cd5af318779c8d969bc9f694fca34bfe5))
+
 ## [3.0.2](https://github.com/t0bst4r/home-assistant-matter-hub/compare/v3.0.1...v3.0.2) (2025-11-23)
 
 
